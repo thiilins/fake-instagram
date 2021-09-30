@@ -6,5 +6,4 @@ const authController = {
     return res.render("auth/register");
   },
 };
-
 module.exports = authController;
