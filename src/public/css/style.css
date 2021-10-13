@@ -65,6 +65,7 @@ a {
 #logo {
   width: 120px;
   display: flex;
+  align-self: center;
   /* margin: 0 auto; */
 }
 #logo img {
