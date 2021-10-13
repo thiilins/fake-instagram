@@ -12,14 +12,12 @@ module.exports = (connection, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING(200),
-        unique: true,
       },
       password: {
         type: DataTypes.STRING(256),
       },
       username: {
         type: DataTypes.STRING(200),
-        unique: true,
       },
       avatar: {
         type: DataTypes.STRING(200),
