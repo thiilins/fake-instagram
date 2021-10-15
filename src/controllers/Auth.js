@@ -8,10 +8,13 @@ const authController = {
   showRegister(req, res) {
     return res.render("auth/register");
   },
-  async registerNewUser(req, res) {
+  async register(req, res) {
     try {
+      //Pegando os dados que vem da requisição
       const { name, email, password, username } = req.body;
+      // Criptografando a senha para salvar no DB
       const hash = bcrypt.hashSync(password, 10);
+      // Usando o metodo create do sequelize para add um user no DB
       const user = await User.create({
         name,
         email,
@@ -21,11 +24,48 @@ const authController = {
         created_at: null,
         updated_at: null,
       });
+      // Se concluido com sucesso encaminhará o usuário para a página de login
       return res.redirect("/login");
+
+      //Capturando o erro
     } catch (error) {
+      // Retornará no console o erro
       console.log(error);
+      // Redirecionará o usuário para a página de registro novamente informando que houve um erro!
       return res.redirect("/registro", {
         error: "Ops! Não foi possível efetuar o seu cadastro!",
+      });
+    }
+  },
+  async login(req, res) {
+    try {
+      const { email, password } = req.body;
+
+      const user = await User.findOne({
+        where: {
+          email,
+        },
+      });
+
+      if (!user) {
+        return res.render("auth/login", { error: "Usuario não existe!" });
+      }
+
+      if (!bcrypt.compareSync(password, user.password)) {
+        return res.render("auth/login", { error: "Senha está errada!" });
+      }
+      // Object.assign(req.session, {
+      //   user: {
+      //     id: user.id,
+      //     name: user.name,
+      //   },
+      // });
+
+      return res.redirect("/home");
+    } catch (error) {
+      console.log(error);
+      return res.render("auth/login", {
+        error: "Sistema indisponivel tente novamente!",
       });
     }
   },
