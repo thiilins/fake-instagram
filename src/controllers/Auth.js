@@ -12,13 +12,11 @@ const authController = {
     try {
       //Pegando os dados que vem da requisição
       const { name, email, password, username } = req.body;
-      // Criptografando a senha para salvar no DB
-      const hash = bcrypt.hashSync(password, 10);
       // Usando o metodo create do sequelize para add um user no DB
       const user = await User.create({
         name,
         email,
-        password: hash,
+        password: bcrypt.hashSync(password, 10),
         username,
         avatar: null,
         created_at: null,
@@ -26,7 +24,6 @@ const authController = {
       });
       // Se concluido com sucesso encaminhará o usuário para a página de login
       return res.redirect("/login");
-
       //Capturando o erro
     } catch (error) {
       // Retornará no console o erro
@@ -40,26 +37,23 @@ const authController = {
   async login(req, res) {
     try {
       const { email, password } = req.body;
-
       const user = await User.findOne({
         where: {
           email,
         },
       });
-
-      if (!user) {
-        return res.render("auth/login", { error: "Usuario não existe!" });
+      if (!user || !bcrypt.compareSync(password, user.password)) {
+        return res.render("auth/login", {
+          error: "Usuario ou Senha incorretos!",
+        });
       }
-
-      if (!bcrypt.compareSync(password, user.password)) {
-        return res.render("auth/login", { error: "Senha está errada!" });
-      }
-      // Object.assign(req.session, {
-      //   user: {
-      //     id: user.id,
-      //     name: user.name,
-      //   },
-      // });
+      Object.assign(req.session, {
+        user: {
+          id: user.id,
+          name: user.name,
+          username: user.username,
+        },
+      });
 
       return res.redirect("/home");
     } catch (error) {
