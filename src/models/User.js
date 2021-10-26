@@ -22,12 +22,6 @@ module.exports = (connection, DataTypes) => {
       avatar: {
         type: DataTypes.STRING(200),
       },
-      created_at: {
-        type: DataTypes.DATE,
-      },
-      updated_at: {
-        type: DataTypes.DATE,
-      },
     },
     {
       tableName: "users",

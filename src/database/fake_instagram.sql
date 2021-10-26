@@ -16,10 +16,9 @@ CREATE TABLE publications (
  image varchar(200) DEFAULT NULL,
  content varchar(3000) DEFAULT NULL,
  user_id int(10) DEFAULT NULL,
-	created_at timestamp NOT NULL DEFAULT current_timestamp(),
-  updated_at timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+ created_at timestamp NOT NULL DEFAULT current_timestamp(),
+ updated_at timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
-
 
 alter table publications
 add foreign key (user_id) references users(id);

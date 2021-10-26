@@ -19,8 +19,6 @@ const authController = {
         password: bcrypt.hashSync(password, 10),
         username,
         avatar: null,
-        created_at: null,
-        updated_at: null,
       });
       // Se concluido com sucesso encaminhará o usuário para a página de login
       return res.redirect("/login");
@@ -58,7 +56,7 @@ const authController = {
       return res.redirect("/home");
     } catch (error) {
       console.log(error);
-      return res.render("auth/login", {
+      return res.redirect("login", {
         error: "Sistema indisponivel tente novamente!",
       });
     }
