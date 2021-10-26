@@ -1,9 +1,9 @@
-const express = require("express"),
-  router = express.Router(),
-  auth = require("../middlewares/auth"),
-  AuthController = require("../controllers/Auth"),
-  MainController = require("../controllers/Main"),
+const express = require("express");
+const router = express.Router();
+const auth = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
+const AuthController = require("../controllers/AuthController"),
+  MainController = require("../controllers/MainController");
 
 router.get("/", AuthController.showLogin);
 
@@ -20,6 +20,6 @@ router.post(
   "/publicar",
   auth,
   upload.single("photo"),
-  PainController.createPublication
+  MainController.createPublication
 );
 module.exports = router;
