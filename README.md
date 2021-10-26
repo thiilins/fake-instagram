@@ -1,6 +1,6 @@
 <div align="center" id="top"> 
   <!-- <img src="./.github/app.gif" alt="Fake Instagram V2" /> -->
-
+ <img src="./.github/preview.png" alt="Fake Instagram" />
 &#xa0;
 
   <!-- <a href="https://fakeinstagramv2.netlify.com">Demo</a> -->
@@ -41,8 +41,6 @@
   <a href="#memo-licença">Licença</a> &#xa0; | &#xa0;
   <a href="https://github.com/thiilins" target="_blank">Autor</a>
 </p>
-
-<br>
 
 ## :dart: Sobre
 
