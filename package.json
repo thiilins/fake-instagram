@@ -3,13 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thiilins/fake-instagram"
+  },
   "scripts": {
     "dev": "./node_modules/.bin/nodemon src/app.js",
     "devg": "nodemon src/app.js"
-  },
+  },  
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Thiago Lins",
+    "email": "falecom@thiagolins.dev.br",
+    "url": "https://www.thiagolins.dev.br"
+  },
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "ejs": "^3.1.6",
