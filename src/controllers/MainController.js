@@ -53,12 +53,12 @@ const mainController = {
   },
   async createComments(req, res) {
     try {
-      const { user } = req.session;
-      const { postId, content } = req.body;
+      const { user_id, post_id } = req.params;
+      const { content } = req.body;
       const newComment = await Comment.create({
         content,
-        publication_id: postId,
-        user_id: user.id,
+        publication_id: post_id,
+        user_id,
       });
 
       return res.redirect("/home");

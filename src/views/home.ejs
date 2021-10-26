@@ -35,8 +35,11 @@
             <%})%>
           </div>
         </div>
-        <form action="/addComentario" method="POST" class="form-comments">
-          <input type="text" hidden name="postId" value="<%=post.id%>" />
+        <form
+          action="/comment/<%=user.id%>/<%=post.id%>/"
+          method="POST"
+          class="form-comments"
+        >
           <input
             type="text"
             placeholder="Adicione um comentário..."
