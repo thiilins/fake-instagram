@@ -4,6 +4,7 @@ const mainController = {
     try {
       const { user } = req.session;
       const posts = await Publication.findAll({
+        order: [["createdAt", "DESC"]],
         include: [
           {
             model: User,
