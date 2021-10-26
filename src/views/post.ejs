@@ -4,7 +4,7 @@
   <body>
     <%- include('./partials/header') %>
     <main class="container content">
-      <section class="post card">
+      <section class="post card post-form">
         <div>
           <% if(typeof error != 'undefined'){%>
           <h4><%= error %></h4>
@@ -12,10 +12,20 @@
         </div>
         <h2>Criar publicação</h2>
         <p>Faça o upload da foto que deseja postar!</p>
-        <form action="/publicar" method="POST" enctype="multipart/form-data">
-          <label for="photo">Selecione a foto</label>
+        <form
+          action="/publicar"
+          class="post-form"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <label for="photo">
+            Selecione a foto <br /><input type="file" name="photo" id="photo" />
+          </label>
           <br />
-          <input type="file" name="photo" id="photo" />
+          <label for="content">
+            Legenda<br />
+            <textarea type="text" name="content" id="content"></textarea> <br />
+          </label>
           <button type="submit" class="btn btn-send">Postar</button>
         </form>
       </section>

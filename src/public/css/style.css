@@ -113,6 +113,7 @@ a {
 }
 .avatar {
   width: 30px;
+  border-radius: 100%;
 }
 .card-body {
   padding: 10px;
@@ -199,6 +200,11 @@ a {
 .post.card {
   padding: 20px;
 }
+.post-form {
+  display: grid;
+  gap: 3px;
+}
+
 @media (max-width: 560px) {
   .busca {
     display: none;

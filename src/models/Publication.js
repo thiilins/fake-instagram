@@ -25,6 +25,11 @@ module.exports = (connection, DataTypes) => {
   Publication.associate = (models) => {
     Publication.belongsTo(models.User, {
       foreignKey: "user_id",
+      as: "user",
+    });
+    Publication.hasMany(models.Comment, {
+      foreignKey: "publication_id",
+      as: "comments",
     });
   };
   return Publication;

@@ -22,4 +22,5 @@ router.post(
   upload.single("photo"),
   MainController.createPublication
 );
+router.post("/addComentario", auth, MainController.createComments);
 module.exports = router;

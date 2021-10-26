@@ -21,12 +21,26 @@ CREATE TABLE publications (
 );
 
 
+CREATE TABLE comments(
+ id int(10) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
+ content varchar(1000),
+ publication_id int(10),
+ user_id int(10),
+ createdAt timestamp NOT NULL DEFAULT current_timestamp(),
+ updatedAt timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+
+);
+
 alter table publications
+add foreign key (user_id) references users(id);
+
+alter table comments
+add foreign key (publication_id) references publications(id),
 add foreign key (user_id) references users(id);
 
 -- | Dados de usuário
 (id, name, email, password, username, avatar, createdAt, updatedAt)
-VALUES(1, 'Usuário', 'usuario@email.com.br', '$2a$10$/3oe.LGVjIAEVNqKmddAjuFwzbncaDgI9ZhVBTsiOgwfj3fRTeCHC', 'JohnDoe', NULL, '2021-10-26 15:26:14', '2021-10-26 15:31:46');
+VALUES(1, 'Usuário', 'usuario@email.com.br', '$2a$10$/3oe.LGVjIAEVNqKmddAjuFwzbncaDgI9ZhVBTsiOgwfj3fRTeCHC', 'JohnDoe', 'default_avatar.png', '2021-10-26 15:26:14', '2021-10-26 15:31:46');
 
 -- |  Dados de Publicações
 INSERT INTO fake_instagram.publications
@@ -49,3 +63,8 @@ INSERT INTO fake_instagram.publications
 VALUES(6, 'a9d3b585-c9b4-4f91-bcdc-d9f53eccef5b.jpg', NULL, 1, '2021-10-26 15:30:27', '2021-10-26 15:30:27');
 INSERT INTO fake_instagram.users
 
+
+-- |  Adicionando dados de comentário
+INSERT INTO fake_instagram.comments
+(id, content, publication_id, user_id, createdAt, updatedAt)
+VALUES(2, 'Wow', 1, 1, '2021-10-26 16:22:03', '2021-10-26 16:22:03');

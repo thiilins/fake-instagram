@@ -29,9 +29,13 @@ module.exports = (connection, DataTypes) => {
     }
   );
   User.associate = (models) => {
-    User.hasOne(models.Publication, {
+    User.hasMany(models.Publication, {
       foreignKey: "user_id",
       as: "publications",
+    });
+    User.hasMany(models.Comment, {
+      foreignKey: "user_id",
+      as: "comments",
     });
   };
   return User;

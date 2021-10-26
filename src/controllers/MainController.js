@@ -1,15 +1,29 @@
 const { Publication, User, Comment } = require("../models");
-
 const mainController = {
   async showHome(req, res) {
     try {
+      const { user } = req.session;
       const posts = await Publication.findAll({
-        include: {
-          model: User,
-          as: "user",
-          required: true,
-        },
+        include: [
+          {
+            model: User,
+            as: "user",
+            required: true,
+          },
+          {
+            model: Comment,
+            as: "comments",
+            required: false,
+            include: {
+              model: User,
+              as: "user",
+              required: true,
+            },
+          },
+        ],
       });
+
+      // return res.status(200).json(posts);
       return res.render("home", { posts });
     } catch (error) {
       console.log(error);
@@ -34,6 +48,24 @@ const mainController = {
       console.log(error);
       return res.render("post", {
         error: "Erro ao tentar cadastrar a publicação",
+      });
+    }
+  },
+  async createComments(req, res) {
+    try {
+      const { user } = req.session;
+      const { postId, content } = req.body;
+      const newComment = await Comment.create({
+        content,
+        publication_id: postId,
+        user_id: user.id,
+      });
+
+      return res.redirect("/home");
+    } catch (error) {
+      console.log(error);
+      return res.render("home", {
+        error: "Ops! Não foi possível inserir seu comentário",
       });
     }
   },

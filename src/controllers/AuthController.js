@@ -18,7 +18,7 @@ const authController = {
         email,
         password: bcrypt.hashSync(password, 10),
         username,
-        avatar: null,
+        avatar: "default_avatar.png",
       });
       // Se concluido com sucesso encaminhará o usuário para a página de login
       return res.redirect("/login");
@@ -50,6 +50,7 @@ const authController = {
           id: user.id,
           name: user.name,
           username: user.username,
+          avatar: user.avatar,
         },
       });
 
