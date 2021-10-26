@@ -28,5 +28,11 @@ module.exports = (connection, DataTypes) => {
       timestamps: false,
     }
   );
+  User.associate = (models) => {
+    User.hasOne(models.Publication, {
+      foreignKey: "user_id",
+      as: "publications",
+    });
+  };
   return User;
 };

@@ -1,8 +1,22 @@
 const { Publication, User, Comment } = require("../models");
 
 const mainController = {
-  showHome(req, res) {
-    return res.render("home");
+  async showHome(req, res) {
+    try {
+      const posts = await Publication.findAll({
+        include: {
+          model: User,
+          as: "user",
+          required: true,
+        },
+      });
+      return res.render("home", { posts });
+    } catch (error) {
+      console.log(error);
+      res.render("home", {
+        error: "Ops! Não foi possível carregar as publicações",
+      });
+    }
   },
   showCreatePublication(req, res) {
     return res.render("post");

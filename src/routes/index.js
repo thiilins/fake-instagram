@@ -1,24 +1,25 @@
 const express = require("express"),
   router = express.Router(),
   auth = require("../middlewares/auth"),
-  authController = require("../controllers/Auth"),
-  mainController = require("../controllers/Main");
+  AuthController = require("../controllers/Auth"),
+  MainController = require("../controllers/Main"),
 const upload = require("../middlewares/upload");
 
-router.get("/", authController.showLogin);
+router.get("/", AuthController.showLogin);
 
-router.get("/login", authController.showLogin);
-router.post("/login", authController.login);
+router.get("/login", AuthController.showLogin);
+router.post("/login", AuthController.login);
 
-router.get("/registro", authController.showRegister);
-router.post("/cadastrar", authController.register);
+router.get("/registro", AuthController.showRegister);
+router.post("/cadastrar", AuthController.register);
 
-router.get("/home", auth, mainController.showHome);
-router.get("/publicar", auth, mainController.showCreatePublication);
+router.get("/home", auth, MainController.showHome);
+router.get("/publicar", auth, MainController.showCreatePublication);
+
 router.post(
   "/publicar",
   auth,
   upload.single("photo"),
-  mainController.createPublication
+  PainController.createPublication
 );
 module.exports = router;
