@@ -1,6 +1,6 @@
 <div align="center" id="top"> 
   <!-- <img src="./.github/app.gif" alt="Fake Instagram V2" /> -->
- <img src="./.github/preview.png" alt="Fake Instagram" />
+ <img src="./.github/preview_cover.png" alt="Fake Instagram" />
 &#xa0;
 
   <!-- <a href="https://fakeinstagramv2.netlify.com">Demo</a> -->
