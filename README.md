@@ -44,7 +44,8 @@
 
 ## :dart: Sobre
 
-Projeto desenvolvido durante o módulo de Sequelize do curso desenvolvimento web fullstack da [Digital House](https://www.digitalhouse.com/br/)
+Projeto desenvolvido durante o módulo de Sequelize do curso desenvolvimento web fullstack da [Digital House](https://www.digitalhouse.com/br/) para praticar desenvolvimento em node com persistência em banco de dados relacional.
+
 
 ## :sparkles: Funcionalidades
 
