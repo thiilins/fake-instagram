@@ -1,4 +1,4 @@
-const port = 3000;
+const port = process.env.PORT || 5050;
 const express = require("express");
 const routes = require("./routes");
 const logger = require("morgan");
