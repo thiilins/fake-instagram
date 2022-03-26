@@ -32,6 +32,6 @@ module.exports = (conection, DataTypes) => {
       as: "user",
     });
   };
-
+  Comment.sync()
   return Comment;
 };

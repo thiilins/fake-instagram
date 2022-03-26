@@ -38,5 +38,6 @@ module.exports = (connection, DataTypes) => {
       as: "comments",
     });
   };
+  User.sync();
   return User;
 };

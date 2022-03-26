@@ -32,5 +32,6 @@ module.exports = (connection, DataTypes) => {
       as: "comments",
     });
   };
+  Publication.sync();
   return Publication;
 };

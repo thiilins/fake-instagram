@@ -8,9 +8,10 @@
     "url": "https://github.com/thiilins/fake-instagram"
   },
   "scripts": {
+    "start": "node src/app.js",
     "dev": "./node_modules/.bin/nodemon src/app.js",
     "devg": "nodemon src/app.js"
-  },  
+  },
   "keywords": [],
   "author": {
     "name": "Thiago Lins",
@@ -28,6 +29,7 @@
     "multer": "^1.4.3",
     "mysql2": "^2.3.0",
     "sequelize": "^6.7.0",
+    "sqlite3": "^5.0.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
